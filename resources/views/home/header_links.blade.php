@@ -8,3 +8,4 @@
 <link href="{{ asset('home/css/style.css') }}" rel="stylesheet" />
 <!-- responsive style -->
 <link href="{{ asset('home/css/responsive.css') }}" rel="stylesheet" />
+<link rel="stylesheet" href="{{ asset('home/css/custom.css') }}">

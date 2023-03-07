@@ -1,0 +1,14 @@
+.strikethrough {
+    text-decoration: line-through;
+    color: blue !important;
+}
+.red_color {
+    color: red !important;
+}
+.blue_color {
+    color: blue !important;
+}
+.paginate_div {
+    -webkit-box-pack: center;
+    margin-top: 20px;
+}
