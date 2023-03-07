@@ -1,0 +1,61 @@
+.div_center{
+    text-align: center;
+    padding-top: 2px;
+    margin-bottom: 40px;
+}
+.h2_font{
+    font-size: 40px;
+    padding-bottom: 40px;
+}
+.center{
+    margin: auto;
+    width: 50%;
+    border: 2px solid whitesmoke;
+    text-align: center;
+    margin-top: 40px;
+}
+.lblcls{
+    display: inline-block;
+    width: 200px;
+}
+.div_design{
+    padding-bottom: 15px;
+}
+.img_size{
+    height: 80px !important;
+    width: 80px !important;
+    display: flex;
+}
+.current_img{
+    height: 80px !important;
+    width: 80px !important;
+}
+.th_color{
+    background: skyblue;
+}
+.th_deg{
+    padding: 30px;
+    white-space:pre-wrap !important;
+    text-align: center;
+}
+.td_deg{
+    white-space:pre-wrap !important;
+    text-align: center;
+}
+.table_layout{
+    table-layout:fixed;
+}
+.action{
+    width: 180px;
+}
+.action_data{
+    text-align: center;
+}
+.form_center{
+    margin: auto; 
+    width: fit-content;
+}
+.right_btn{
+    float: right;
+    margin-right: 138px;
+}
