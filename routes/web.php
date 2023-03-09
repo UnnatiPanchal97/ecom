@@ -35,3 +35,10 @@ Route::get('/update_product/{id}',[AdminController::class,'update_product']);
 Route::post('/update_product_confirm/{id}',[AdminController::class,'update_product_confirm']);
 // User Routes
 Route::get('/product_details/{id}',[HomeController::class,'product_details']);
+Route::post('/add_cart/{id}',[HomeController::class,'add_cart']);
+Route::get('/show_cart',[HomeController::class,'show_cart']);
+Route::get('/remove_cart/{id}',[HomeController::class,'remove_cart']);
+Route::get('/cash_order',[HomeController::class,'cash_order']);
+//stripe route
+Route::get('/stripe/{totalPrice}',[HomeController::class,'stripe']);
+Route::post('stripe',[HomeController::class,'stripePost'])->name('stripe.post');

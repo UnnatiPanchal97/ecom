@@ -40,9 +40,9 @@
             <div class="main-panel">
                 <div class="content-wrapper">
                     @if (session()->has('message'))
-                        <div class="alert alert-success" role="alert">
+                        <div class="alert alert-success alert-dismissable" role="alert">
                             {{ session()->get('message') }}
-                            {{-- <button type="button" class="btn-close" data-dismiss="alert" aria-label="close"></button> --}}
+                            {{-- <button type="button" class="btn-close" data-dismiss="alert" aria-label="close">&times;</button> --}}
                         </div>
                     @endif
                     <div class="div_center">
