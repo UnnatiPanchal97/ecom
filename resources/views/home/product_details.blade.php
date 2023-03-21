@@ -28,14 +28,14 @@
                 </h5>
                 @if (isset($product->discount_price) && !empty($product->discount_price))
                     <h6 class="red_color">
-                        Discount Price: {{ $product->discount_price }}
+                        Discount Price: ₹{{ $product->discount_price }}
                     </h6>
                     <h6 class="blue_color">
-                        Price: <span class="strikethrough">${{ $product->price }}</span>
+                        Price: <span class="strikethrough">₹{{ $product->price }}</span>
                     </h6>
                 @else
                     <h6 class="blue_color">
-                        Price: ${{ $product->price }}
+                        Price: ₹{{ $product->price }}
                     </h6>
                 @endif
                 <h6>Product Category: {{ $product->category_->category_name }}</h6>

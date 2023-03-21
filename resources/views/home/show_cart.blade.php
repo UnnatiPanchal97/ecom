@@ -42,7 +42,7 @@
                         <tr>
                             <td>{{ $cartData->product_title }}</td>
                             <td>{{ $cartData->quantity }}</td>
-                            <td>{{ $cartData->price }}</td>
+                            <td>₹{{ $cartData->price }}</td>
                             <td>
                                 <img src="/product/{{ $cartData->image }}" class="img_deg" alt="">
                             </td>
@@ -59,7 +59,7 @@
                 </tbody>
             </table>
             <div>
-                <h1 class="total_deg">Total Price : ${{ $totalPrice }}</h1>
+                <h1 class="total_deg">Total Price : ₹ {{ $totalPrice }}</h1>
             </div>
             <div class="div_padding">
                 <h1 class="order_process_btn">Proceed to Order</h1>

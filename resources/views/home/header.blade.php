@@ -41,7 +41,7 @@
                     @if (Route::has('login'))
                         @auth
                             <li class="nav-item dropdown">
-                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" data-toggle="dropdown" role="button"
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button"
                                 aria-haspopup="true" aria-expanded="true"><span>{{ Auth::user()->name }}</span></a>
                                 <ul class="dropdown-menu">
                                     <li>

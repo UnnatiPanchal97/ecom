@@ -44,6 +44,7 @@
 }
 .table_layout{
     table-layout:fixed;
+    width: 100%;
 }
 .action{
     width: 180px;
@@ -58,4 +59,12 @@
 .right_btn{
     float: right;
     margin-right: 138px;
+}
+.info{
+    background-color: #8f5fe8;
+    white-space:pre-wrap;
+    width: fit-content !important;  
+}
+.green_color{
+    color: green;
 }
