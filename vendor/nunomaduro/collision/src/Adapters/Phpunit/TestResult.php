@@ -28,6 +28,8 @@ final class TestResult
 
     public const DEPRECATED = 'deprecated';
 
+    public const NOTICE = 'notice';
+
     public const WARN = 'warnings';
 
     public const RUNS = 'pending';
@@ -56,6 +58,8 @@ final class TestResult
 
     public string $warning = '';
 
+    public string $warningSource = '';
+
     /**
      * Creates a new TestResult instance.
      */
@@ -77,10 +81,25 @@ final class TestResult
              || $this->type === TestResult::RISKY
              || $this->type === TestResult::SKIPPED
              || $this->type === TestResult::DEPRECATED
+             || $this->type === TestResult::NOTICE
              || $this->type === TestResult::INCOMPLETE;
 
         if ($throwable instanceof Throwable && $asWarning) {
-            $this->warning = trim((string) preg_replace("/\r|\n/", ' ', $throwable->message()));
+            if (in_array($this->type, [TestResult::DEPRECATED, TestResult::NOTICE])) {
+                foreach (explode("\n", $throwable->stackTrace()) as $line) {
+                    if (strpos($line, 'vendor/nunomaduro/collision') === false) {
+                        $this->warningSource = str_replace(getcwd().'/', '', $line);
+
+                        break;
+                    }
+                }
+            }
+
+            $this->warning .= trim((string) preg_replace("/\r|\n/", ' ', $throwable->message()));
+
+            // pest specific
+            $this->warning = str_replace('__pest_evaluable_', '', $this->warning);
+            $this->warning = str_replace('This test depends on "P\\', 'This test depends on "', $this->warning);
         }
     }
 
@@ -179,14 +198,14 @@ final class TestResult
     public static function makeIcon(string $type): string
     {
         switch ($type) {
-            case self::DEPRECATED:
-                return 'd';
             case self::FAIL:
                 return '⨯';
             case self::SKIPPED:
                 return '-';
+            case self::DEPRECATED:
             case self::WARN:
             case self::RISKY:
+            case self::NOTICE:
                 return '!';
             case self::INCOMPLETE:
                 return '…';
@@ -205,12 +224,12 @@ final class TestResult
     public static function makeCompactIcon(string $type): string
     {
         switch ($type) {
-            case self::DEPRECATED:
-                return 'd';
             case self::FAIL:
                 return '⨯';
             case self::SKIPPED:
                 return 's';
+            case self::DEPRECATED:
+            case self::NOTICE:
             case self::WARN:
             case self::RISKY:
                 return '!';
@@ -234,6 +253,7 @@ final class TestResult
             case self::FAIL:
                 return 'red';
             case self::DEPRECATED:
+            case self::NOTICE:
             case self::SKIPPED:
             case self::INCOMPLETE:
             case self::RISKY:
@@ -258,6 +278,7 @@ final class TestResult
             case self::FAIL:
                 return 'red';
             case self::DEPRECATED:
+            case self::NOTICE:
             case self::SKIPPED:
             case self::INCOMPLETE:
             case self::RISKY:

@@ -68,3 +68,13 @@
 .green_color{
     color: green;
 }
+.line_height{
+    line-height: 20px;
+}
+.email_heading{
+    text-align: center;
+    font-size: 25px;
+}
+.font_white{
+    color: whitesmoke !important;
+}
