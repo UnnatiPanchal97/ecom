@@ -14,11 +14,22 @@ class HomeController extends Controller
 {
     const BASE_URL = 'https://api.stripe.com';
     const SECRET_KEY = 'sk_test_51Mjis7SCshgbkMI6R6KdqU7ASCNCm8XEMZypsnRgERFfLbii0k2s55fLb3IiguhgI2KGNUvPeCScSzR7VQe1EVpd00okLpdUpc';
+
     public function redirect()
     {
         $usertype = Auth::user()->usertype;
         if (isset($usertype) && $usertype == '1') {
-            return view('admin.home');
+            $totalProducts=Product::all()->count();
+            $totalOrders=Order::all()->count();
+            $totalCustomers=User::all()->count();
+            $orders=Order::all();
+            $totalRevenue=0;
+            foreach ($orders as $order) {
+               $totalRevenue=$totalRevenue+$order->price;
+            }
+            $totalDelivered=Order::where('delivery_status','delivered')->get()->count();
+            $totalProcessing=Order::where('delivery_status','processing')->get()->count();
+            return view('admin.home',compact('totalProducts','totalCustomers','totalOrders','totalRevenue','totalDelivered','totalProcessing'));
         } else {
             return to_route('root');
         }
