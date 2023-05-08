@@ -117,4 +117,10 @@ class AdminController extends Controller
         Notification::send($order,new OrderDetailEmailNotification($details));
         return redirect()->back();
     }
+    public function searchData(Request $request){
+        $searchText=$request->search;
+        $orders=Order::first('name');
+        $order=Order::where('name','LIKE',"%$searchText%")->orWhere('phone','LIKE',"%$searchText%")->orWhere('product_title','LIKE',"%$searchText%")->get();
+        return view('admin.order',compact('order'));
+    }
 }

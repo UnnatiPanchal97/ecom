@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="{{ asset('admin/assets/css/custom.css') }}">
 </head>
 <body>
+
     <div class="container-scroller">
         <!-- partial:partials/_sidebar.html -->
         @include('admin.sidebar')
@@ -27,6 +28,13 @@
                             <button type="button" class="btn-close" data-dismiss="alert" aria-label="close"></button>
                         </div>
                     @endif
+                    <div class="search_style">
+                        <form action="{{ url('search') }}" method="GET">
+                            @csrf
+                            <input type="search" name="search" placeholder="Search by name">
+                            <input type="submit" value="Search" class="btn btn-outline-primary">
+                        </form>
+                    </div>
                     <div class="col-lg-12 stretch-card">
                         <div class="card">
                             <div class="card-body">
@@ -47,7 +55,7 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach ($order as $orders)
+                                        @forelse ($order as $orders)
                                             <tr>
                                                 <td class="td_deg">{{ $orders->name }}</td>
                                                 <td class="td_deg">{{ $orders->email }}</td>
@@ -90,7 +98,11 @@
                                                     <a href="{{ url('send_email',$orders->id) }}" class="btn btn-inverse-info line_height">Send Email</a>
                                                 </td>
                                             </tr>
-                                        @endforeach
+                                            @empty
+                                                <tr>
+                                                    <td colspan="11" class="text-center">No Data Found</td>
+                                                </tr>
+                                        @endforelse
                                     </tbody>
                                 </table>
                             </div>

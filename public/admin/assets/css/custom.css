@@ -53,7 +53,7 @@
     text-align: center;
 }
 .form_center{
-    margin: auto; 
+    margin: auto;
     width: fit-content;
 }
 .right_btn{
@@ -63,7 +63,7 @@
 .info{
     background-color: #8f5fe8;
     white-space:pre-wrap;
-    width: fit-content !important;  
+    width: fit-content !important;
 }
 .green_color{
     color: green;
@@ -77,4 +77,8 @@
 }
 .font_white{
     color: whitesmoke !important;
+}
+.search_style{
+    padding-left: 400px;
+    padding-bottom: 40px;
 }

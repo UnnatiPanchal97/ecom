@@ -22,35 +22,42 @@ Route::middleware([
         return view('dashboard');
     })->name('dashboard');
 });
-//Admin Routes
-Route::get('/redirect',[HomeController::class,'redirect'])->middleware('auth','verified')->name('redirect');
-//----------------- *** Category Routes *** ----------------------//
-Route::get('/view_category',[AdminController::class,'view_category']);
-Route::post('/add_category',[AdminController::class,'add_category']);
-Route::get('/delete_category/{id}',[AdminController::class,'delete_category']);
-//----------------- *** Product Routes *** ----------------------//
-Route::get('/view_product',[AdminController::class,'view_product']);
-Route::post('/add_product',[AdminController::class,'add_product']);
-Route::get('/show_product',[AdminController::class,'show_product']);
-Route::get('/delete_product/{id}',[AdminController::class,'delete_product']);
-Route::get('/update_product/{id}',[AdminController::class,'update_product']);
-Route::post('/update_product_confirm/{id}',[AdminController::class,'update_product_confirm']);
-//----------------- *** Order Routes *** ----------------------//
-Route::get('/order',[AdminController::class,'order']);
-Route::get('/delivered/{id}',[AdminController::class,'delivered']);
-Route::get('/print_pdf/{id}',[AdminController::class,'print_pdf']);
-Route::get('/send_email/{id}',[AdminController::class,'send_email']);
-Route::post('/send_user_email/{id}',[AdminController::class,'send_user_email']);
+//----------------- *** Admin Routes *** ----------------------//
+Route::middleware('auth','verified')->group(function(){
+    Route::get('/redirect',[HomeController::class,'redirect'])->name('redirect');
+    //----------------- *** Category Routes *** ----------------------//
+    Route::get('/view_category',[AdminController::class,'view_category']);
+    Route::post('/add_category',[AdminController::class,'add_category']);
+    Route::get('/delete_category/{id}',[AdminController::class,'delete_category']);
+    //----------------- *** Product Routes *** ----------------------//
+    Route::get('/view_product',[AdminController::class,'view_product']);
+    Route::post('/add_product',[AdminController::class,'add_product']);
+    Route::get('/show_product',[AdminController::class,'show_product']);
+    Route::get('/delete_product/{id}',[AdminController::class,'delete_product']);
+    Route::get('/update_product/{id}',[AdminController::class,'update_product']);
+    Route::post('/update_product_confirm/{id}',[AdminController::class,'update_product_confirm']);
+    //----------------- *** Order Routes *** ----------------------//
+    Route::get('/order',[AdminController::class,'order']);
+    Route::get('/delivered/{id}',[AdminController::class,'delivered']);
+    Route::get('/print_pdf/{id}',[AdminController::class,'print_pdf']);
+    Route::get('/send_email/{id}',[AdminController::class,'send_email']);
+    Route::post('/send_user_email/{id}',[AdminController::class,'send_user_email']);
+    //----------------- *** Search Route *** ----------------------//
+    Route::get('/search',[AdminController::class,'searchData']);
+
+});
 //----------------- *** User Routes *** ----------------------//
 Route::get('/product_details/{id}',[HomeController::class,'product_details']);
-Route::post('/add_cart/{id}',[HomeController::class,'add_cart']);
-Route::get('/show_cart',[HomeController::class,'show_cart']);
-Route::get('/remove_cart/{id}',[HomeController::class,'remove_cart']);
-Route::get('/cash_order',[HomeController::class,'cash_order']);
-//------------------------------ *** Stripe Routes *** --------------------------------------------//
-Route::get('/stripe/{totalPrice}', [HomeController::class, 'stripe'])->name('stripeForm');
-Route::post('stripe-form/submit', [HomeController::class, 'submit'])->name('stripeSubmit');
-Route::get('stripe-response/{id}', [HomeController::class, 'response'])->name('stripeResponse');
-//<-------------------------------------old stripe route----------------------------->//
-// Route::get('/stripe/{totalPrice}',[HomeController::class,'stripe']);
-// Route::post('stripe/{totalPrice}',[HomeController::class,'stripePost'])->name('stripe.post');
+Route::middleware('auth','verified')->group(function(){
+    Route::post('/add_cart/{id}',[HomeController::class,'add_cart']);
+    Route::get('/show_cart',[HomeController::class,'show_cart']);
+    Route::get('/remove_cart/{id}',[HomeController::class,'remove_cart']);
+    Route::get('/cash_order',[HomeController::class,'cash_order']);
+    //------------------------------ *** Stripe Routes *** --------------------------------------------//
+    Route::get('/stripe/{totalPrice}', [HomeController::class, 'stripe'])->name('stripeForm');
+    Route::post('stripe-form/submit', [HomeController::class, 'submit'])->name('stripeSubmit');
+    Route::get('stripe-response/{id}', [HomeController::class, 'response'])->name('stripeResponse');
+    //<-------------------------------------old stripe route----------------------------->//
+    // Route::get('/stripe/{totalPrice}',[HomeController::class,'stripe']);
+    // Route::post('stripe/{totalPrice}',[HomeController::class,'stripePost'])->name('stripe.post');
+});
