@@ -13,8 +13,9 @@
                                 </div>
                             </div>
                             <div class="col-3">
-                                <div class="icon icon-box-success ">
-                                    <span class="mdi mdi-arrow-top-right icon-item"></span>
+                                <div class="icon icon-box-info ">
+                                    <i class="fa-solid fa-t r_margin"></i>
+                                    <i class="fa-solid fa-p"></i>
                                 </div>
                             </div>
                         </div>
@@ -33,8 +34,9 @@
                                 </div>
                             </div>
                             <div class="col-3">
-                                <div class="icon icon-box-success">
-                                    <span class="mdi mdi-arrow-top-right icon-item"></span>
+                                <div class="icon icon-box-info">
+                                    <i class="fa-solid fa-t r_margin"></i>
+                                    <i class="fa-solid fa-c"></i>
                                 </div>
                             </div>
                         </div>
@@ -53,8 +55,9 @@
                                 </div>
                             </div>
                             <div class="col-3">
-                                <div class="icon icon-box-danger">
-                                    <span class="mdi mdi-arrow-bottom-left icon-item"></span>
+                                <div class="icon icon-box-info">
+                                    <i class="fa-solid fa-t r_margin"></i>
+                                    <i class="fa-solid fa-o"></i>
                                 </div>
                             </div>
                         </div>
@@ -73,8 +76,9 @@
                                 </div>
                             </div>
                             <div class="col-3">
-                                <div class="icon icon-box-success ">
-                                    <span class="mdi mdi-arrow-top-right icon-item"></span>
+                                <div class="icon icon-box-info ">
+                                    <i class="fa-solid fa-t r_margin"></i>
+                                    <i class="fa-solid fa-r"></i>
                                 </div>
                             </div>
                         </div>
@@ -93,8 +97,9 @@
                                 </div>
                             </div>
                             <div class="col-3">
-                                <div class="icon icon-box-success ">
-                                    <span class="mdi mdi-arrow-top-right icon-item"></span>
+                                <div class="icon icon-box-info ">
+                                    <i class="fa-solid fa-o r_margin"></i>
+                                    <i class="fa-solid fa-d"></i>
                                 </div>
                             </div>
                         </div>
@@ -113,8 +118,9 @@
                                 </div>
                             </div>
                             <div class="col-3">
-                                <div class="icon icon-box-success">
-                                    <span class="mdi mdi-arrow-top-right icon-item"></span>
+                                <div class="icon icon-box-info">
+                                    <i class="fa-solid fa-o r_margin"></i>
+                                    <i class="fa-solid fa-p"></i>
                                 </div>
                             </div>
                         </div>
