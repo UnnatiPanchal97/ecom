@@ -93,6 +93,7 @@
                         </div>
                     </div>
                 </div>
+                @include('admin.footer')
             </div>
             <!-- main-panel ends -->
         </div>
