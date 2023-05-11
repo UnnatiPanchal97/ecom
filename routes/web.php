@@ -49,10 +49,17 @@ Route::middleware('auth','verified')->group(function(){
 //----------------- *** User Routes *** ----------------------//
 Route::get('/product_details/{id}',[HomeController::class,'product_details']);
 Route::middleware('auth','verified')->group(function(){
+
+    //------------------------------ *** Cart Routes *** --------------------------------------------//
     Route::post('/add_cart/{id}',[HomeController::class,'add_cart']);
     Route::get('/show_cart',[HomeController::class,'show_cart']);
     Route::get('/remove_cart/{id}',[HomeController::class,'remove_cart']);
+
+    //------------------------------ *** Order Routes *** --------------------------------------------//
     Route::get('/cash_order',[HomeController::class,'cash_order']);
+    Route::get('/show_order',[HomeController::class,'show_order']);
+    Route::get('/cancel_order/{id}',[HomeController::class,'cancel_order']);
+
     //------------------------------ *** Stripe Routes *** --------------------------------------------//
     Route::get('/stripe/{totalPrice}', [HomeController::class, 'stripe'])->name('stripeForm');
     Route::post('stripe-form/submit', [HomeController::class, 'submit'])->name('stripeSubmit');

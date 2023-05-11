@@ -290,4 +290,20 @@ class HomeController extends Controller
             return redirect()->back()->with('error', 'Payment request failed.');
         }
     }
+    public function show_order(){
+        if (Auth::id()) {
+            $userId=Auth::user()->id;
+            $orders=Order::where('user_id',$userId)->get();
+            return view('home.order',compact('orders'));
+        }
+        else{
+            return redirect('login');
+        }
+    }
+    public function cancel_order($id){
+        $order=Order::find($id) ;
+        $order->delivery_status='Cancelled';
+        $order->save();
+        return redirect()->back();
+    }
 }
